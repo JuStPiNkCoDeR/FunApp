@@ -28,6 +28,10 @@ class LogsAdapter: RecyclerView.Adapter<LogsAdapter.LogHolder>() {
         holder.textViewId.text = currentLog.id.toString()
     }
 
+    fun getLogAt(position: Int): Log {
+        return logs[position]
+    }
+
     fun setLogs(logs: List<Log>) {
         this.logs = logs
         notifyDataSetChanged()

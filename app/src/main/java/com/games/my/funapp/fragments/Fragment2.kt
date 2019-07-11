@@ -2,19 +2,22 @@ package com.games.my.funapp.fragments
 
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import com.games.my.funapp.R
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.ItemTouchHelper.SimpleCallback
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.games.my.funapp.adapters.LogsAdapter
+import com.games.my.funapp.data.Log
 import com.games.my.funapp.viewmodels.LogViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -30,6 +33,10 @@ class Fragment2 : Fragment() {
     private lateinit var navController: NavController
     private lateinit var logViewModel: LogViewModel
     private lateinit var layout: View
+
+    private fun insertStaticLog() {
+        logViewModel.insert(Log(null, ":D", SimpleDateFormat("dd.MM.yy hh:mm:ss").format(Date())))
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,6 +54,43 @@ class Fragment2 : Fragment() {
         logViewModel.getAllLogs().observe(this, Observer {
             adapter.setLogs(it)
         })
+
+        insertStaticLog()
+
+        ItemTouchHelper(object: SimpleCallback(0, ItemTouchHelper.RIGHT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                logViewModel.delete(adapter.getLogAt(viewHolder.adapterPosition))
+            }
+
+        }).attachToRecyclerView(recyclerView)
         return layout
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.log_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.delete_all_logs -> {
+                logViewModel.deleteAllLogs()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

@@ -7,6 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.games.my.funapp.R
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.games.my.funapp.adapters.LogsAdapter
+import com.games.my.funapp.viewmodels.LogViewModel
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -19,14 +27,26 @@ private const val ARG_PARAM2 = "param2"
  *
  */
 class Fragment2 : Fragment() {
+    private lateinit var navController: NavController
+    private lateinit var logViewModel: LogViewModel
+    private lateinit var layout: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment2, container, false)
+        val layout = inflater.inflate(R.layout.fragment_fragment2, container, false)
+        val recyclerView: RecyclerView = layout.findViewById(R.id.recycle_view)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.setHasFixedSize(true)
+
+        val adapter = LogsAdapter()
+        recyclerView.adapter = adapter
+        navController = NavHostFragment.findNavController(this)
+        logViewModel = ViewModelProviders.of(this).get(LogViewModel::class.java)
+        logViewModel.getAllLogs().observe(this, Observer {
+            adapter.setLogs(it)
+        })
+        return layout
     }
-
-
 }

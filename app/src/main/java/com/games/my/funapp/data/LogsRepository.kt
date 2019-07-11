@@ -1,8 +1,8 @@
 package com.games.my.funapp.data
 
 import android.app.Application
-import android.os.AsyncTask
 import androidx.lifecycle.LiveData
+import com.games.my.funapp.utils.ioThread
 
 class LogsRepository(application: Application) {
     private val logDAO: LogDAO
@@ -19,47 +19,26 @@ class LogsRepository(application: Application) {
     }
 
     fun insert(log: Log) {
-        InsertAsync(logDAO).execute(log)
+        ioThread {
+            logDAO.insert(log)
+        }
     }
 
     fun update(log: Log) {
-        UpdateAsync(logDAO).execute(log)
+        ioThread {
+            logDAO.update(log)
+        }
     }
 
     fun delete(log: Log) {
-        DeleteAsync(logDAO).execute(log)
+        ioThread {
+            logDAO.delete(log)
+        }
     }
 
     fun deleteAllLogs() {
-        DeleteAllAsync(logDAO).execute()
-    }
-
-
-    private class InsertAsync internal constructor(private val asyncDAO: LogDAO): AsyncTask<Log, Void, Void>() {
-        override fun doInBackground(vararg params: Log): Void? {
-            asyncDAO.insert(params[0])
-            return null
-        }
-    }
-
-    private class UpdateAsync internal constructor(private val asyncDAO: LogDAO): AsyncTask<Log, Void, Void>() {
-        override fun doInBackground(vararg params: Log): Void? {
-            asyncDAO.update(params[0])
-            return null
-        }
-    }
-
-    private class DeleteAsync internal constructor(private val asyncDAO: LogDAO): AsyncTask<Log, Void, Void>() {
-        override fun doInBackground(vararg params: Log): Void? {
-            asyncDAO.delete(params[0])
-            return null
-        }
-    }
-
-    private class DeleteAllAsync internal constructor(private val asyncDAO: LogDAO): AsyncTask<Void, Void, Void>() {
-        override fun doInBackground(vararg params: Void): Void? {
-            asyncDAO.deleteAllLogs()
-            return null
+        ioThread {
+            logDAO.deleteAllLogs()
         }
     }
 }

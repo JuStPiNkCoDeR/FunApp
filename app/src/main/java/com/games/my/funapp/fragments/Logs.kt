@@ -29,7 +29,7 @@ private const val ARG_PARAM2 = "param2"
  * A simple [Fragment] subclass.
  *
  */
-class Fragment2 : Fragment() {
+class Logs : Fragment() {
     private lateinit var navController: NavController
     private lateinit var logViewModel: LogViewModel
     private lateinit var layout: View
@@ -42,7 +42,7 @@ class Fragment2 : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val layout = inflater.inflate(R.layout.fragment_fragment2, container, false)
+        val layout = inflater.inflate(R.layout.fragment_logs, container, false)
         val recyclerView: RecyclerView = layout.findViewById(R.id.recycle_view)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.setHasFixedSize(true)

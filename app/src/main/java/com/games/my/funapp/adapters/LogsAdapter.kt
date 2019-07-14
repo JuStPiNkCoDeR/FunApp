@@ -25,7 +25,6 @@ class LogsAdapter: RecyclerView.Adapter<LogsAdapter.LogHolder>() {
         val currentLog: Log = logs[position]
         holder.textViewMessage.text = currentLog.message
         holder.textViewTime.text = currentLog.time
-        holder.textViewId.text = currentLog.id.toString()
     }
 
     fun getLogAt(position: Int): Log {
@@ -40,6 +39,5 @@ class LogsAdapter: RecyclerView.Adapter<LogsAdapter.LogHolder>() {
     class LogHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textViewMessage: TextView = itemView.findViewById(R.id.text_log)
         val textViewTime: TextView = itemView.findViewById(R.id.text_log_time)
-        val textViewId: TextView = itemView.findViewById(R.id.text_id)
     }
 }

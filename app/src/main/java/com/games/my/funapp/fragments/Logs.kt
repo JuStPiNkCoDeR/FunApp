@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.ItemTouchHelper.SimpleCallback
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.games.my.funapp.adapters.LogsAdapter
+import com.games.my.funapp.appHelp.AppHelp
 import com.games.my.funapp.data.Log
 import com.games.my.funapp.viewmodels.LogViewModel
 import java.text.SimpleDateFormat
@@ -32,11 +33,6 @@ private const val ARG_PARAM2 = "param2"
 class Logs : Fragment() {
     private lateinit var navController: NavController
     private lateinit var logViewModel: LogViewModel
-    private lateinit var layout: View
-
-    private fun insertStaticLog() {
-        logViewModel.insert(Log(null, ":D", SimpleDateFormat("dd.MM.yy hh:mm:ss").format(Date())))
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,8 +51,6 @@ class Logs : Fragment() {
             adapter.setLogs(it)
         })
 
-        insertStaticLog()
-
         ItemTouchHelper(object: SimpleCallback(0, ItemTouchHelper.RIGHT) {
             override fun onMove(
                 recyclerView: RecyclerView,
@@ -71,6 +65,9 @@ class Logs : Fragment() {
             }
 
         }).attachToRecyclerView(recyclerView)
+
+        val appHelp = AppHelp(context!!, true)
+        appHelp.notify("Hello!")
         return layout
     }
 

@@ -2,6 +2,7 @@
 <resources>
     <string name="show_logs">Посмотреть логи</string>
     <string name="delete_all_logs">Удалить все логи</string>
-    <string name="notification_channel_name_for_goals">цель</string>
+    <string name="notification_channel_name_for_goals">Призыв к цели</string>
     <string name="notification_goal_title">Вам нужно идти к своей цели!</string>
+    <string name="notification_goal_channel_desc">Извещает вас о необходимости выполнить задание</string>
 </resources>

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.SimpleCallback
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.games.my.funapp.AppError
 import com.games.my.funapp.adapters.LogsAdapter
 import com.games.my.funapp.appHelp.AppHelp
 import com.games.my.funapp.data.Log
@@ -66,8 +67,12 @@ class Logs : Fragment() {
 
         }).attachToRecyclerView(recyclerView)
 
-        val appHelp = AppHelp(context!!, true)
-        appHelp.notify("Hello!")
+        try {
+            val appHelp = AppHelp(context, true)
+            appHelp.notify("Hello!")
+        } catch (error: AppError) {
+            error.show(logViewModel)
+        }
         return layout
     }
 

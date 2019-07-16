@@ -6,4 +6,5 @@ interface NotificationConfig {
     val title: Int
     val channelName: Int
     val channelImportance: Int?
+    val channelDescription: Int
 }

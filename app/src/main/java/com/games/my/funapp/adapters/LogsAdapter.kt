@@ -1,5 +1,6 @@
 package com.games.my.funapp.adapters
 
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,5 +40,12 @@ class LogsAdapter: RecyclerView.Adapter<LogsAdapter.LogHolder>() {
     class LogHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textViewMessage: TextView = itemView.findViewById(R.id.text_log)
         val textViewTime: TextView = itemView.findViewById(R.id.text_log_time)
+
+        init {
+            textViewMessage.setOnClickListener {
+                textViewMessage.ellipsize = null
+                textViewMessage.maxLines = 999
+            }
+        }
     }
 }

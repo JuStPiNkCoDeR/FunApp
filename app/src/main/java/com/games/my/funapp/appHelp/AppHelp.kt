@@ -4,9 +4,8 @@ import android.content.Context
 import com.games.my.funapp.appHelp.notification.GoalConfig
 import com.games.my.funapp.appHelp.notification.Notification
 
-class AppHelp(private val context: Context, private val notification: Boolean) {
+class AppHelp(private val context: Context?, private val notification: Boolean) {
     private var notifyBuilder: Notification? = null
-    private var notificationId: Int = 0
 
     init {
         if (notification) notifyBuilder = Notification(context, GoalConfig())

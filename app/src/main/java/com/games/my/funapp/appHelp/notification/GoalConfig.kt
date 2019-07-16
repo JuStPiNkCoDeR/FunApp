@@ -14,5 +14,7 @@ class GoalConfig: NotificationConfig {
     override val channelName: Int
         get() = R.string.notification_channel_name_for_goals
     override val channelImportance: Int?
-        get() = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) NotificationManager.IMPORTANCE_DEFAULT else null
+        get() = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) NotificationManager.IMPORTANCE_HIGH else null
+    override val channelDescription: Int
+        get() = R.string.notification_goal_channel_desc
 }

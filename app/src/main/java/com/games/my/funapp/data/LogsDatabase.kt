@@ -28,7 +28,7 @@ abstract class LogsDatabase: RoomDatabase() {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
                             ioThread {
-                                getInstance(context).logDAO().insert(Log(0, "Аллилуя!!!!", SimpleDateFormat("dd.MM.yy hh:mm:ss").format(Date())))
+                                getInstance(context).logDAO().insert(Log(0, "DataBase initialized", SimpleDateFormat("dd.MM.yy HH:mm:ss").format(Date())))
                             }
                         }
                     })

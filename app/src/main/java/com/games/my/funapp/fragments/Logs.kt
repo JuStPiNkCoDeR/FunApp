@@ -66,13 +66,6 @@ class Logs : Fragment() {
             }
 
         }).attachToRecyclerView(recyclerView)
-
-        try {
-            val appHelp = AppHelp(context, true)
-            appHelp.notify("Hello!")
-        } catch (error: AppError) {
-            error.show(logViewModel)
-        }
         return layout
     }
 

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewStub
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -36,6 +37,7 @@ class Main : Fragment() {
             navController.navigate(item.itemId)
             return@setOnNavigationItemSelectedListener true
         }
+
         return layout
     }
 }

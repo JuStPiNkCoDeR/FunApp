@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:padding="8dp">
+        <EditText android:id="@+id/goal_essence"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:lines="3"
+                  android:hint="@string/goal_essence"
+                  android:inputType="textMultiLine"
+                  android:layout_marginBottom="32dp"/>
+        <EditText android:id="@+id/goal_finish_date"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:inputType="date"
+                  android:hint="@string/goal_finish_date"
+                  android:layout_marginBottom="32dp"/>
+        <CheckBox android:id="@+id/isHelpNeed"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="@string/app_help"
+                  android:layout_marginBottom="8dp"/>
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/available_helps"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   tools:listitem="@layout/app_help_item"/>
+</LinearLayout>

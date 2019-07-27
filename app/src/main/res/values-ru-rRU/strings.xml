@@ -5,4 +5,17 @@
     <string name="notification_channel_name_for_goals">Призыв к цели</string>
     <string name="notification_goal_title">Вам нужно идти к своей цели!</string>
     <string name="notification_goal_channel_desc">Извещает вас о необходимости выполнить задание</string>
+    <string name="goal_essence">Суть цели</string>
+    <string name="goal_finish_date">Время завершения цели</string>
+    <string name="app_help">Нужна ли вам помощь программы для этой цели?</string>
+    <string name="app_help_notification">Уведомления</string>
+    <string name="app_help_monday">Понедельник</string>
+    <string name="app_help_tuesday">Вторник</string>
+    <string name="app_help_wednesday">Среда</string>
+    <string name="app_help_thursday">Четверг</string>
+    <string name="app_help_friday">Пятница</string>
+    <string name="app_help_saturday">Суббота</string>
+    <string name="app_help_sunday">Воскресенье</string>
+    <string name="add_new_goal">Добавить новую цель</string>
+    <string name="app_help_time">Добавить напоминание</string>
 </resources>

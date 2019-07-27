@@ -8,6 +8,8 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.games.my.funapp.AppError
+import com.games.my.funapp.appHelp.AppHelp
+import java.util.*
 
 /** @author -> JustPinkcoder
  *  @param context context of application(shouldn't be null)
@@ -16,7 +18,8 @@ import com.games.my.funapp.AppError
  *  @throws AppError
  *
  *  Use to control and realise app notifications*/
-class Notification(private val context: Context?, private val config: NotificationConfig) {
+class Notification(private val context: Context?, private val config: NotificationConfig): AppHelp {
+    override val atDayOfWeekAndTime: List<Calendar> = listOf()
     private var id: Int = 0
     private val builder: NotificationCompat.Builder? =
         if (context != null)
@@ -24,11 +27,20 @@ class Notification(private val context: Context?, private val config: Notificati
             .setSmallIcon(config.icon)
             .setContentTitle(context.getString(config.title))
         else null
+    private var description: String = ""
 
     init {
         if (context != null)
             createNotificationChannel()
         else throw AppError("Context не найден!\n${this::class.qualifiedName}")
+    }
+
+    override fun release() {
+        if (context != null && builder != null) {
+            builder.setContentText(description)
+            NotificationManagerCompat.from(context).notify(id, builder.build())
+            id++
+        }
     }
 
     private fun createNotificationChannel() {
@@ -43,13 +55,8 @@ class Notification(private val context: Context?, private val config: Notificati
         }
     }
 
-
-    fun notify(description: String) {
-        if (context != null && builder != null) {
-            builder.setContentText(description)
-            NotificationManagerCompat.from(context).notify(id, builder.build())
-            id++
-        }
+    fun setDescription(desc: String) {
+        description = desc
     }
 
 }

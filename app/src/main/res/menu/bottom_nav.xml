@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/newGoal"
+          android:title="@string/add_new_goal"
+          android:icon="@drawable/ic_add_box"/>
     <item   android:id="@+id/logs_fragment"
             android:title="@string/show_logs"
             android:icon="@drawable/ic_message"/>

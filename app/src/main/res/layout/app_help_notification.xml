@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
+        <CheckBox android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="@string/app_help_monday"
+                  android:layout_marginEnd="8dp"/>
+        <Button   android:id="@+id/add_monday_alarm"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="@string/app_help_time"
+                  android:layout_marginEnd="8dp"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/monday_alarms_field"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"/>
+
+    <CheckBox android:id="@+id/tuesday"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+    <CheckBox android:id="@+id/wednesday"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+    <CheckBox android:id="@+id/thursday"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+    <CheckBox android:id="@+id/friday"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+    <CheckBox android:id="@+id/saturday"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+    <CheckBox android:id="@+id/sunday"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+</LinearLayout>

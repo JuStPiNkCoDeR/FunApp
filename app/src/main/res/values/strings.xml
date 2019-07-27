@@ -5,4 +5,20 @@
     <string name="notification_channel_name_for_goals">Call for a goal</string>
     <string name="notification_goal_title">You need to reach your goal!</string>
     <string name="notification_goal_channel_desc">Notifies you of the need to complete the task</string>
+    <string name="goal_essence">The essence of the goal</string>
+    <string name="goal_finish_date">Goal completion time</string>
+    <string name="app_help">Do you need application help for this task?</string>
+    <string name="app_help_notification">Notifications</string>
+    <string name="app_help_monday">Monday</string>
+    <string name="app_help_tuesday">Tuesday</string>
+    <string name="app_help_wednesday">Wednesday</string>
+    <string name="app_help_thursday">Thursday</string>
+    <string name="app_help_friday">Friday</string>
+    <string name="app_help_saturday">Saturday</string>
+    <string name="app_help_sunday">Sunday</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="add_new_goal">Add new goal</string>
+    <string name="app_help_time">Add reminder</string>
 </resources>

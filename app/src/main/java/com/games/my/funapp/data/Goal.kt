@@ -2,7 +2,6 @@ package com.games.my.funapp.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.games.my.funapp.appHelp.AppHelp
 
 @Entity(tableName = "goals_table")
 data class Goal(
@@ -12,6 +11,5 @@ data class Goal(
     val startDateStamp: Long,
     val finishDataStamp: Long,
     val task: String,
-    val isHelpNeeded: Boolean = false,
-    val helpConfig: AppHelp? = null
+    val isAppHelpNeeded: Boolean
 )
